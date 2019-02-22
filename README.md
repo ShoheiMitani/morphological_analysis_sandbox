@@ -29,7 +29,7 @@ pipenv run janome
 
 # Function
 
-`input.csv`に記載された文字列を形態素解析し、名刺の出現個数を数えて`**_result.csv`に出力します。
+`input.csv`に記載された文字列を形態素解析し、名刺の出現個数を数えて`**_result.csv`に出力する。
 
 # Files
 
