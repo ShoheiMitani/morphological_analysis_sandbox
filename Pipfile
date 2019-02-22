@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+nagisa = "*"
+numpy = "*"
+pandas = "*"
+janome = "*"
+
+[requires]
+python_version = "3.7.2"
+
+[scripts]
+nagisa = "python by_nagisa.py"
+janome = "python by_janome.py"
