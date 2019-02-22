@@ -36,6 +36,6 @@ pipenv run janome
 |File|意味|
 |:---|:--|
 |input.csv|形態素解析したい文字列|
-|userdic.csv|janomeに登録する[ユーザー定義辞書](http://mocobeta.github.io/janome/#id8)）|
+|userdic.csv|janomeに登録する[ユーザー定義辞書](http://mocobeta.github.io/janome/#id8)|
 |janome_result.csv|janomeの出力結果|
 |nagisa_result.csv|nagisaの出力結果|
