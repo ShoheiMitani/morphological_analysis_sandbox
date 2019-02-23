@@ -10,6 +10,7 @@ nagisa = "*"
 numpy = "*"
 pandas = "*"
 janome = "*"
+jupyter = "*"
 
 [requires]
 python_version = "3.7.2"
@@ -17,3 +18,4 @@ python_version = "3.7.2"
 [scripts]
 nagisa = "python by_nagisa.py"
 janome = "python by_janome.py"
+jupyter = "jupyter notebook"

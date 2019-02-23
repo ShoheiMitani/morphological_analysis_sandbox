@@ -1,3 +1,5 @@
 input.csv
 userdic.csv
 *_result.csv
+*_sandbox.ipynb
+*-checkpoint.ipynb
