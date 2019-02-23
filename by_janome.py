@@ -2,8 +2,23 @@ import csv
 import numpy as np
 import pandas as pd
 from janome.tokenizer import Tokenizer
+from janome.analyzer import Analyzer
+from janome.charfilter import *
+from janome.tokenfilter import *
 
 all_nouns = np.empty(0)
+
+char_filters = [UnicodeNormalizeCharFilter(),
+                RegexReplaceCharFilter('[+-]?\d+', ''),
+                RegexReplaceCharFilter('[•#%:@-~?&!()\.\*\/\[\]\+\']', ''),
+                ]
+
+token_filters = [CompoundNounFilter(),
+                 POSKeepFilter(['名詞']),
+                 LowerCaseFilter(),
+                 ExtractAttributeFilter('surface')]
+
+analyzer = Analyzer(char_filters=char_filters, token_filters=token_filters)
 
 with open('input.csv', 'r') as f:
     """
@@ -13,8 +28,8 @@ with open('input.csv', 'r') as f:
 
     for row in reader:
         text = row[0]
-        t = Tokenizer("userdic.csv", udic_enc="utf8")
-        nouns = [token.surface for token in t.tokenize(text) if token.part_of_speech.startswith('名詞')]
+        nouns = [surface for surface in analyzer.analyze(text)]
+        print(nouns)
         all_nouns = np.hstack((all_nouns, nouns))
 
 """
