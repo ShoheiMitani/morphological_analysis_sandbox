@@ -5,16 +5,18 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.charfilter import *
 from janome.tokenfilter import *
+from janome_extension import PartsOfSpeechFilter
 
 all_nouns = np.empty(0)
 
 char_filters = [UnicodeNormalizeCharFilter(),
-                RegexReplaceCharFilter('[+-]?\d+', ''),
+                RegexReplaceCharFilter('[♡❤♪⭐♥✨❗✧☺⁂➕❁#》☻】✨✨✼✲✻✨✨✨✴❁【☘◡]', ''),
                 RegexReplaceCharFilter('[•#%:@-~?&!()\.\*\/\[\]\+\']', ''),
                 ]
 
 token_filters = [CompoundNounFilter(),
                  POSKeepFilter(['名詞']),
+                 PartsOfSpeechFilter(['一般', '複合', '固有名詞']),
                  LowerCaseFilter(),
                  ExtractAttributeFilter('surface')]
 
