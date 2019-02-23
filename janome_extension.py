@@ -1,5 +1,34 @@
 from janome.tokenfilter import *
 
+class OneCharTokenFilter(TokenFilter):
+    """
+    A OneCharTokenFilter filter token which has only one length
+    """
+
+    def apply(self, tokens):
+            for token in tokens:
+                if len(token) <= 1:
+                    continue
+                yield token
+
+class BlackListFilter(TokenFilter):
+    """
+    A BlackListFilter filter tokens which match black_list.
+    """
+    def __init__(self, black_list):
+        """
+        Initialize PartsOfSpeechFilter object.
+        :param white_list: keep part-of-speech type list.
+        """
+        self.black_list = black_list
+
+    def apply(self, tokens):
+        for token in tokens:
+            if token in self.black_list:
+                continue
+            yield token
+
+
 class PartsOfSpeechFilter(TokenFilter):
     """
     A PartsOfSpeechFilter keeps tokens associated with part-of-speech type listed in the keep type list and removes other tokens.
