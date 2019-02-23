@@ -11,6 +11,8 @@ numpy = "*"
 pandas = "*"
 janome = "*"
 jupyter = "*"
+gensim = "*"
+pprint = "*"
 
 [requires]
 python_version = "3.7.2"
