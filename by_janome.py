@@ -5,7 +5,7 @@ from janome.tokenizer import Tokenizer
 from janome.analyzer import Analyzer
 from janome.charfilter import *
 from janome.tokenfilter import *
-from janome_extension import PartsOfSpeechFilter
+from janome_extension import PartsOfSpeechFilter, OneCharTokenFilter, BlackListFilter
 
 all_nouns = np.empty(0)
 
@@ -18,9 +18,13 @@ token_filters = [CompoundNounFilter(),
                  POSKeepFilter(['名詞']),
                  PartsOfSpeechFilter(['一般', '複合', '固有名詞']),
                  LowerCaseFilter(),
-                 ExtractAttributeFilter('surface')]
+                 ExtractAttributeFilter('surface'),
+                 OneCharTokenFilter(),
+                 ]
 
-analyzer = Analyzer(char_filters=char_filters, token_filters=token_filters)
+tokenizer = Tokenizer("userdic.csv", udic_enc="utf8")
+
+analyzer = Analyzer(char_filters, tokenizer, token_filters)
 
 with open('input.csv', 'r') as f:
     """
@@ -31,7 +35,6 @@ with open('input.csv', 'r') as f:
     for row in reader:
         text = row[0]
         nouns = [surface for surface in analyzer.analyze(text)]
-        print(nouns)
         all_nouns = np.hstack((all_nouns, nouns))
 
 """
