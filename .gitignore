@@ -5,3 +5,4 @@ wakati.txt
 *_sandbox.ipynb
 *-checkpoint.ipynb
 *.vec
+.vscode/*
