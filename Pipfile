@@ -20,4 +20,5 @@ python_version = "3.7.2"
 [scripts]
 nagisa = "python by_nagisa.py"
 janome = "python by_janome.py"
+wakati = "python wakati_by_janome.py"
 jupyter = "jupyter notebook"

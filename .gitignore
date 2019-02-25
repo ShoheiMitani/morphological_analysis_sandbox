@@ -1,5 +1,6 @@
 input.csv
 userdic.csv
+wakati.txt
 *_result.csv
 *_sandbox.ipynb
 *-checkpoint.ipynb
