@@ -13,6 +13,7 @@ janome = "*"
 jupyter = "*"
 gensim = "*"
 pprint = "*"
+simstring-pure = "*"
 
 [requires]
 python_version = "3.7.2"
