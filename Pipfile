@@ -14,6 +14,8 @@ jupyter = "*"
 gensim = "*"
 pprint = "*"
 simstring-pure = "*"
+wordcloud = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7.2"
