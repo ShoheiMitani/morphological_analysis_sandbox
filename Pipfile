@@ -15,6 +15,7 @@ gensim = "*"
 pprint = "*"
 simstring-pure = "*"
 networkx = "*"
+wordcloud = "*"
 matplotlib = "*"
 
 [requires]
