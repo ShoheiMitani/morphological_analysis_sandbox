@@ -36,7 +36,7 @@ def main():
     file = open('similarity_grouping_result.csv', 'w')
 
     writer = csv.writer(file, lineterminator='\n')
-    writer.writerow(['frequent_word', 'total_count', 'combined_passed_name'])
+    writer.writerow(['frequent_word', 'total_count', 'synonym'])
 
     df = pd.read_csv('janome_result.csv')
     keys = df['name'].ravel()
@@ -44,7 +44,7 @@ def main():
     char_filters = [UnicodeNormalizeCharFilter()]
     token_filters = [
         POSKeepFilter(['名詞']),
-        PartsOfSpeechFilter(['一般', '複合', '固有名詞']),
+        PartsOfSpeechFilter(['固有名詞']),
         ExtractAttributeFilter('surface'),
         OneCharTokenFilter()
     ]
@@ -79,13 +79,13 @@ def main():
 
         # 再頻出の単語を抽出する
         keywords = [surface for surface in analyzer.analyze(combined_passed_name)]
-        frequent_word = { 'key': None, 'count': None }
+        frequent_word = { 'key': 'No Key', 'count': 0 }
         for key in keywords:
-            if len(word) <= 3:
+            if len(word) < 3:
                 continue
 
             count = combined_passed_name.count(key)
-            if frequent_word['key'] is None or count > frequent_word['count']:
+            if count > frequent_word['count']:
                 frequent_word['key'] = key
                 frequent_word['count'] = count
 
